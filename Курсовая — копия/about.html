@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <title>Творческий центр "Античность"</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <noscript>
+        <style>.body_hide{opacity: 1 !important;}</style>
+    </noscript>
+</head>
+<body class="body_hide">
+    <header>
+        <a href="index.html" class="header-link">
+            <img src="image/logo.png" alt="Логотип" class="logo">
+            <h2 class="title">Античность</h2>
+        </a>
+        <nav class="buttons">
+            <a href="about.html" class="button">О нас</a>
+            <a href="tablereservation.php" class="button">Бронь стола</a>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="main-title">«Античность» - г.Пермь</h1>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <img src="image/geo.png" alt="Адрес" class="info-icon">
+                        <p>Пермский муниципальный округ, село Фролы, Весенняя улица, д.20</p>
+                    </div>
+                    <div class="info-item">
+                        <img src="image/time.png" alt="Время работы" class="info-icon">
+                        <p><span class="highlight">Пн-Пт:</span> 11:00-20:00<br><span class="highlight">Сб-Вс:</span> Выходной</p>
+                    </div>  
+                    <div class="info-item">
+                        <img src="image/vk.png" alt="VK" class="info-icon">
+                        <a href="https://vk.com/ccantiquity" class="vk-link">https://vk.com/ccantiquity</a>    
+                    </div>
+                </div>
+            </div>
+            <img src="image/superimg.jpg" alt="Интерьер" class="hero-image">
+        </section>
+
+        <section class="about-section">
+            <div class="section-header">
+                <img src="image/lightbulb.png" alt="Идея" class="section-icon">
+                <h2>Идея проекта «Античность»</h2>
+            </div>
+            <div class="section-content">
+                <p>Наша главная цель – это создание увлекательного и вдохновляющего центра творчества, который станет воплощением идей и стремлений людей, желающих погрузиться в мир своих увлечений. Мы видим этот центр как уникальное пространство, где каждый сможет раскрыть свои таланты, исследовать новые направления и погружаться с головой в любимые занятия.</p>
+                <p>В нашем центре будут организованы творческие мастерские и занятия, направленные на развитие различных хобби, от искусства и ремёсел до музыки и кулинарии. Здесь каждый посетитель сможет найти поддержку и вдохновение, общаясь с другими единомышленниками и профессионалами в своих областях.</p>
+                <p>Мы стремимся создать атмосферу, способствующую обмену идеями и творческому самовыражению. Наша миссия - не только развивать хобби, но и объединять людей, помогая им находить новые связи, делиться опытом и находить удовольствие в процессе творчества.</p>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2>Наша команда</h2>
+            <div class="team-cards">
+                <div class="card">
+                    <img src="image/Leader.png" alt="Влад Рязанов" class="avatar" id="leaderImage">
+                    <h3 class="name">Влад Рязанов</h3>
+                    <p class="position">Лидер</p>
+                    <a href="https://vk.com/vlaador" class="contact">Связаться</a>
+                </div>
+                <div class="card">
+                    <img src="image/Denis.jpg" alt="Денис Аптуков" class="avatar">
+                    <h3 class="name">Денис Аптуков</h3>
+                    <p class="position">Маркетолог проекта</p>
+                    <a href="https://vk.com/denskull59" class="contact">Связаться</a>
+                </div>
+            </div>
+        </section>
+
+        <div id="gifModal" class="modal">
+            <span class="close">&times;</span>
+            <img src="image/maxwell.gif" alt="Гифка" class="gif">
+            <audio id="gifAudio" src="image/Catbycat_-_Maxwell_the_Cat_Theme_75819683.mp3" preload="auto"></audio>
+        </div>
+    </main>
+
+    <script>
+        // Анимация появления страницы
+        setTimeout(function() {
+            document.body.classList.add('body_visible');
+        }, 300);
+
+        // Модальное окно с гифкой
+        const leaderImage = document.getElementById('leaderImage');
+        const modal = document.getElementById('gifModal');
+        const closeBtn = document.querySelector('.close');
+        const audio = document.getElementById('gifAudio');
+
+        leaderImage.addEventListener('click', function() {
+            modal.style.display = "block";
+            audio.play();
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = "none";
+            audio.pause();
+            audio.currentTime = 0;
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+                audio.pause();
+                audio.currentTime = 0;
+            }
+        });
+    </script>
+</body>
+</html>

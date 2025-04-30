@@ -1,0 +1,217 @@
+:root {
+    --primary-color: #957B8D;
+    --secondary-color: #F5F5DC;
+    --text-color: #333;
+    --highlight-color: #957B8D;
+    --border-radius: 30px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Fira Sans Condensed", sans-serif;
+    margin: 0;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.body_hide {
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out;
+}
+
+.body_visible {
+    opacity: 1;
+}
+
+/* Шапка */
+header {
+    background-color: var(--primary-color);
+    padding: 15px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+.header-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 10px;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+}
+
+.title {
+    color: var(--secondary-color);
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.button {
+    background-color: transparent;
+    border: none;
+    color: var(--secondary-color);
+    text-decoration: none;
+    padding: 8px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 4px;
+}
+
+.button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Основной контент */
+main {
+    padding-top: 100px;
+    min-height: 100vh;
+}
+
+/* Секция с фоновым изображением */
+.op-border {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    min-height: 300px;
+    overflow: hidden;
+}
+
+.backroundimg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px;
+}
+
+.overlay h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.overlay p {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    max-width: 600px;
+}
+
+/* Секция с изображением и цитатой */
+.main2 {
+    padding: 40px 5%;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.vangog {
+    width: 100%;
+    max-width: 500px;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.quote {
+    font-family: "Fira Sans Condensed", sans-serif;
+    border: 10px solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: white;
+    width: 100%;
+    max-width: 340px;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.quote:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Адаптивность для планшетов */
+@media (min-width: 768px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .overlay h1 {
+        font-size: 2.5rem;
+    }
+    
+    .overlay p {
+        font-size: 1.3rem;
+    }
+    
+    .content-wrapper {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    
+    .vangog {
+        width: 40%;
+    }
+}
+
+/* Адаптивность для десктопов */
+@media (min-width: 1024px) {
+    .overlay h1 {
+        font-size: 3rem;
+    }
+    
+    .overlay p {
+        font-size: 1.5rem;
+    }
+    
+    .quote {
+        margin-top: 80px;
+        font-size: 20px;
+    }
+}

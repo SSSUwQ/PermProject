@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Творческий центр "Античность"</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <noscript>
+        <style>.body_hide{opacity: 1 !important;}</style>
+    </noscript>
+</head>
+<body class="body_hide">
+    <header>
+        <a href="index.html" class="header-link">
+            <img src="image/logo.png" alt="Логотип" class="logo">
+            <h2 class="title">Античность</h2>
+        </a>
+        <nav class="buttons">
+            <a href="about.html" class="button">О нас</a>
+            <a href="tablereservation.php" class="button">Бронь стола</a>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="op-border">
+            <img src="image/something1.png" alt="Фон" class="backroundimg">
+            <div class="overlay">
+                <h1>Открой мир новых красок</h1>
+                <p>присоединяйся к творческому сообществу</p>
+            </div>
+        </section>
+
+        <section class="main2">
+            <div class="content-wrapper">
+                <img src="image/Vangog.png" alt="Ван Гог" class="vangog">
+                <div class="quote">
+                    <p>"Как много в искусстве прекрасного! Кто помнит всё, что видел, тот никогда не останется без пищи для размышлений, никогда не будет по-настоящему одинок"</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Анимация появления страницы
+        setTimeout(function() {
+            document.body.classList.add('body_visible');
+        }, 300);
+    </script>
+</body>
+</html>
