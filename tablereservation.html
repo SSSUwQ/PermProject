@@ -1,77 +1,82 @@
 <!DOCTYPE html>
-<?php
-// Подключение к базе данных
-$db = new mysqli('localhost', 'root', 'Pivochka277353@', 'booking_system');
-if ($db->connect_error) die("Connection failed: " . $db->connect_error);
-$db->set_charset("utf8");
-
-// Обработка формы бронирования
-$message = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $message = '<div class="error">Онлайн бронирование временно недоступно. Проект закрыт.</div>';
-}
-
-// Получение списка столов
-$tables = $db->query("SELECT * FROM tables WHERE is_active = TRUE")->fetch_all(MYSQLI_ASSOC);
-?>
-<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style3.css">
-    <title>Творческий центр "Античность"</title>
+    <title>Творческий центр "Античность" - Бронирование</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;700&display=swap" rel="stylesheet">
-    <noscript>
-        <style>.body_hide{opacity: 1 !important;}</style>
-    </noscript>
+    <link rel="stylesheet" href="style3.css">
 </head>
 <body class="body_hide">
     <header>
-        <a href="index.html" style="text-decoration:none;">
-            <img src="image/logo.png" alt="Логотип" height="60px" class="logo">
+        <a href="index.html" class="header-link">
+            <img src="image/logo.png" alt="Логотип" class="logo">
             <h2 class="title">Античность</h2>
         </a>
         <div class="buttons">
             <a href="about.html" class="button">О нас</a>
-            <a href="tablereservation.php" class="button">Бронь стола</a>
+            <a href="reservation.html" class="button">Бронь стола</a>
         </div>
     </header>
     
     <div class="main">
         <h1>Бронирование</h1>
         
-        <?php echo $message; ?>
-        
         <div class="tabs">
             <div class="tab active" data-tab="table">Столы (300₽/час)</div>
             <div class="tab" data-tab="workshop">Комната (500₽/час)</div>
         </div>
         
-        <form method="POST" id="booking-form">
+        <form id="booking-form">
             <input type="hidden" name="type" id="booking-type" value="table">
             
             <div class="tab-content active" id="table-tab">
                 <div class="form-group">
                     <label>Выберите стол:</label>
                     <div class="table-list">
-                        <?php foreach ($tables as $table): ?>
-                            <div class="table-item" data-id="<?= $table['table_id'] ?>">
-                                <div>Стол №<?= str_pad($table['table_number'], 2, '0', STR_PAD_LEFT) ?></div>
-                                <div class="price">300₽/час</div>
-                            </div>
-                        <?php endforeach; ?>
+                        <div class="table-item selected" data-id="1">
+                            <div>Стол №01</div>
+                            <div class="price">300₽/час</div>
+                        </div>
+                        <div class="table-item" data-id="2">
+                            <div>Стол №02</div>
+                            <div class="price">300₽/час</div>
+                        </div>
+                        <div class="table-item" data-id="3">
+                            <div>Стол №03</div>
+                            <div class="price">300₽/час</div>
+                        </div>
+                        <div class="table-item" data-id="4">
+                            <div>Стол №04</div>
+                            <div class="price">300₽/час</div>
+                        </div>
+                        <div class="table-item" data-id="5">
+                            <div>Стол №05</div>
+                            <div class="price">300₽/час</div>
+                        </div>
+                        <div class="table-item" data-id="6">
+                            <div>Стол №06</div>
+                            <div class="price">300₽/час</div>
+                        </div>
+                        <div class="table-item" data-id="7">
+                            <div>Стол №07</div>
+                            <div class="price">300₽/час</div>
+                        </div>
+                        <div class="table-item" data-id="8">
+                            <div>Стол №08</div>
+                            <div class="price">300₽/час</div>
+                        </div>
                     </div>
-                    <input type="hidden" name="table_id" id="selected-table">
+                    <input type="hidden" name="table_id" id="selected-table" value="1">
                 </div>
             </div>
             
             <div class="tab-content" id="workshop-tab">
                 <div class="form-group">
                     <label>Комната для мастер-классов</label>
-                    <div class="price-display" style="font-size: 24px; margin: 15px 0; color: #957B8D;">
+                    <div class="price-display">
                         Стоимость: 500₽/час
                     </div>
                 </div>
@@ -89,7 +94,7 @@ $tables = $db->query("SELECT * FROM tables WHERE is_active = TRUE")->fetch_all(M
             
             <div class="form-group">
                 <label>Дата*</label>
-                <input type="date" name="date" min="<?= date('Y-m-d') ?>" required>
+                <input type="date" name="date" required>
             </div>
             
             <div class="form-group">
@@ -109,14 +114,16 @@ $tables = $db->query("SELECT * FROM tables WHERE is_active = TRUE")->fetch_all(M
             <button type="submit">Забронировать</button>
         </form>
     </div>
-    <script>
-        // Анимация появления страницы
-        setTimeout(function() {
-            document.body.classList.add('body_visible');
-        }, 300);
-    </script>
 
     <script>
+        // Плавное появление страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.body.classList.remove('body_hide');
+                document.body.classList.add('body_visible');
+            }, 100);
+        });
+
         // Переключение между вкладками
         document.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', function() {
@@ -138,11 +145,22 @@ $tables = $db->query("SELECT * FROM tables WHERE is_active = TRUE")->fetch_all(M
                 document.getElementById('selected-table').value = this.dataset.id;
             });
         });
-        
-        // Выбираем первый стол по умолчанию
-        if (document.querySelector('.table-item')) {
+
+        // Обработка формы
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Здесь можно добавить обработку формы, например, отправку на сервер
+            alert('Бронирование отправлено! Мы свяжемся с вами для подтверждения.');
+            this.reset();
+            
+            // Возвращаем выбор на первый стол
             document.querySelector('.table-item').click();
-        }
+        });
+
+        // Установка минимальной даты - сегодня
+        const today = new Date().toISOString().split('T')[0];
+        document.querySelector('input[type="date"]').min = today;
     </script>
 </body>
 </html>
